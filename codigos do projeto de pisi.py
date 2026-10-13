@@ -155,5 +155,5 @@ def menu():
             print("Opção inválida. Escolha entre 0 e 6.")
 
 
-if __name__ == "_main_":
+if __name__ == "__main__":
     menu()
