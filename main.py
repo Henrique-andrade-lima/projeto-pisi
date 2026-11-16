@@ -1,5 +1,3 @@
-import os
-print("RODANDO:", os.path.abspath(__file__))
 from armazenamento import carregar
 from usuarios import adicionar_usuarios, remover_usuarios
 from remedios import adicionar_remedios, remover_remedio, listar

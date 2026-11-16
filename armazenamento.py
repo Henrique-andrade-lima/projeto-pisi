@@ -1,17 +1,20 @@
 from pathlib import Path
 import json
 
-ARQUIVO = Path(__file__).with_name("dados.json")
+PASTA = Path(__file__).parent
+ARQUIVO = PASTA / "dados.json"
+ARQUIVO_PROGRESSO = PASTA / "progresso.json"
 
-def carregar():
+
+def carregar(arquivo=ARQUIVO):
     try:
-        with open(ARQUIVO, encoding="utf-8") as f:
+        with open(arquivo, encoding="utf-8") as f:
             return json.load(f)
     except FileNotFoundError:
         return {}
- 
- 
-def salvar(dados):
-    with open(ARQUIVO, "w", encoding="utf-8") as f:
+
+
+def salvar(dados, arquivo=ARQUIVO):
+    with open(arquivo, "w", encoding="utf-8") as f:
         json.dump(dados, f, ensure_ascii=False, indent=2)
  
