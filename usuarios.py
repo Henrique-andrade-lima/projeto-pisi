@@ -1,3 +1,4 @@
+from progresso import apagar_usuario
 from armazenamento import salvar
 from entrada import ler_texto, escolher_usuario
 
@@ -18,5 +19,6 @@ def remover_usuarios(dados):
         return
     if input(f"Remover {nome} e todos os remédios? (s/n): ").lower() == "s":
         del dados[nome]
+        apagar_usuario(nome)
         salvar(dados)
         print("Usuário removido do sistema com sucesso!")

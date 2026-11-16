@@ -2,6 +2,7 @@ from armazenamento import carregar
 from usuarios import adicionar_usuarios, remover_usuarios
 from remedios import adicionar_remedios, remover_remedio, listar
 from alarme import iniciar_alarmes
+from placar import mostrar_progresso
 
 
 def menu():
@@ -13,6 +14,7 @@ def menu():
         "4": ("Remover remédio de um usuário", remover_remedio),
         "5": ("Listar tudo", listar),
         "6": ("Iniciar alarme", iniciar_alarmes),
+        "7": ("Ver pontos e descontos", mostrar_progresso),
         "0": ("Sair", None),
     }
     while True:
@@ -26,7 +28,7 @@ def menu():
         if escolha in opcoes:
             opcoes[escolha][1](dados)
         else:
-            print("Opção inválida. Escolha entre 0 e 6.")
+            print("Opção inválida. Escolha entre 0 e 7.")
 
 
 if __name__ == "__main__":
