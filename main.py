@@ -1,4 +1,4 @@
-from carregar_e_salvar import carregar
+from armazenamento import carregar
 from usuarios import adicionar_usuarios, remover_usuarios
 from remedios import adicionar_remedios, remover_remedio, listar
 from alarme import iniciar_alarmes

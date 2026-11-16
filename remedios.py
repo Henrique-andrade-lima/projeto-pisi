@@ -1,4 +1,4 @@
-from carregar_e_salvar import salvar
+from armazenamento import salvar
 from entrada import ler_texto, ler_horarios, escolher_usuario
 
 
