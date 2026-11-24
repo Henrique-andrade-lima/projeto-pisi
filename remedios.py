@@ -1,0 +1,50 @@
+from armazenamento import salvar
+from entrada import ler_texto, ler_horarios, escolher_usuario
+
+
+def adicionar_remedios(dados):
+    nome_usuario = escolher_usuario(dados)
+    if nome_usuario is None:
+        return
+    remedio = {
+        "nome": ler_texto("Nome do remédio: "),
+        "dosagem": input("Dosagem (ex: 100 mg): ").strip(),
+        "tratamento": input("Qual problema está sendo tratado: ").strip(),
+        "horarios": ler_horarios(),
+    }
+    dados[nome_usuario].append(remedio)
+    salvar(dados)
+    print(f"Remédio {remedio['nome']} adicionado para {nome_usuario}.")
+
+
+def remover_remedio(dados):
+    nome_usuario = escolher_usuario(dados)
+    if nome_usuario is None:
+        return
+    remedios = dados[nome_usuario]
+    if not remedios:
+        print("Esse usuário não tem remédios.")
+        return
+    for i, r in enumerate(remedios, start=1):
+        print(f"  {i}- {r['nome']}")
+    escolha = input("Número do remédio a remover: ").strip()
+    if escolha.isdigit() and 1 <= int(escolha) <= len(remedios):
+        removido = remedios.pop(int(escolha) - 1)
+        salvar(dados)
+        print(f"{removido['nome']} removido.")
+    else:
+        print("Opção inválida.")
+
+
+def listar(dados):
+    if not dados:
+        print("Nada cadastrado ainda.")
+        return
+    for nome, remedios in dados.items():
+        print(f"\n👤 {nome}")
+        if not remedios:
+            print("   (sem remédios)")
+        for r in remedios:
+            print(f"   💊 {r['nome']} - {r['dosagem'] or 'sem dosagem'}")
+            print(f"      Tratamento: {r['tratamento'] or 'não informado'}")
+            print(f"      Horários: {', '.join(r['horarios'])}")
